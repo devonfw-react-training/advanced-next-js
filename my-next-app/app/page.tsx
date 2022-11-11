@@ -7,17 +7,14 @@ export default async function Home() {
   const hero = Math.floor(Math.random() * 10 + 1);
   console.log("Hero Id: ", hero);
 
-  const { name } = await (
+  const data = await (
     await fetch(`https://swapi.dev/api/people/${hero}`, {
       next: { revalidate: 30 },
     })
   ).json();
-  const { birth_year } = await (
-    await fetch(`https://swapi.dev/api/people/${hero}`, {
-      next: { revalidate: 30 },
-    })
-  ).json();
-  const age = 1900 + Number.parseInt((birth_year as string).substring(0, 2));
+
+  const age =
+    1900 + Number.parseInt((data.birth_year as string).substring(0, 2));
 
   return (
     <div className={styles.container}>
@@ -63,7 +60,7 @@ export default async function Home() {
           >
             <h2>Learn &rarr;</h2>
             <p>
-              Learn React with {name}. <br />I am master for{" "}
+              Learn React with {data.name}. <br />I am master for{" "}
               {util.getYear(util.addYears(new Date(), -age))} years!
             </p>
             <div>
