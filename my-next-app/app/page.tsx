@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import * as util from "date-fns";
-import Preferences from "./pref";
+import CourseCompletion from "./cert";
 
 export default async function Home() {
   const hero = Math.floor(Math.random() * 10 + 1);
@@ -64,7 +64,7 @@ export default async function Home() {
               {util.getYear(util.addYears(new Date(), -age))} years!
             </p>
             <div>
-              <Preferences />
+              <CourseCompletion />
             </div>
           </a>
         </div>

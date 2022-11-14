@@ -8,7 +8,7 @@ const markAsDone = (done: boolean) => {
   }
 };
 
-export default function Preferences() {
+export default function CourseCompletion() {
   const [sw, setSw] = useState(false);
 
   const toggle = (e: ChangeEvent) => {
